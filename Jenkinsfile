@@ -6,15 +6,15 @@ pipeline {
                echo 'Cloning repository...'
            }
        }
-       stage('Verify Environment') {
+       stage('Verify Containers') {
            steps {
-               sh 'echo "Jenkins is running correctly"'
+               sh 'podman ps'
            }
        }
        stage('Run Tests') {
            steps {
                sh '''
-               echo "Run your automation here"
+               python3 --version || echo "Python not installed"
                '''
            }
        }
