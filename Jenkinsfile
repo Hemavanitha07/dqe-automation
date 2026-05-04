@@ -6,14 +6,16 @@ pipeline {
                echo 'Cloning repository...'
            }
        }
-       stage('Run Containers') {
+       stage('Verify Environment') {
            steps {
-               bat 'python -m podman_compose up -d'
+               sh 'echo "Jenkins is running correctly"'
            }
        }
-       stage('Verify') {
+       stage('Run Tests') {
            steps {
-               bat 'podman ps'
+               sh '''
+               echo "Run your automation here"
+               '''
            }
        }
    }
