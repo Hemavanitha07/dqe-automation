@@ -6,9 +6,19 @@ pipeline {
                echo 'Cloning repository...'
            }
        }
-       stage('Verify Pipeline') {
+       stage('Run Containers') {
            steps {
-               echo 'Jenkins pipeline is working correctly'
+               sh 'podman-compose up -d'
+           }
+       }
+       stage('Wait for services') {
+           steps {
+               sh 'sleep 20'
+           }
+       }
+       stage('Verify Containers') {
+           steps {
+               sh 'podman ps'
            }
        }
    }
