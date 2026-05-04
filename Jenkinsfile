@@ -8,7 +8,7 @@ pipeline {
        }
        stage('Run Containers') {
            steps {
-               sh 'python -m podman_compose up -d'
+               bat 'python -m podman_compose up -d'
            }
        }
        stage('Verify') {
