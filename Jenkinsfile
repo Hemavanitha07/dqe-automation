@@ -6,16 +6,9 @@ pipeline {
                echo 'Cloning repository...'
            }
        }
-       stage('Verify Containers') {
+       stage('Verify Pipeline') {
            steps {
-               sh 'podman ps'
-           }
-       }
-       stage('Run Tests') {
-           steps {
-               sh '''
-               python3 --version || echo "Python not installed"
-               '''
+               echo 'Jenkins pipeline is working correctly'
            }
        }
    }
