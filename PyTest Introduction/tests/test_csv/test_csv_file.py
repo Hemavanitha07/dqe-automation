@@ -2,7 +2,7 @@ import pytest
 import pandas as pd
 import re
 
-FILE_PATH = "src/data/data.csv"
+FILE_PATH = "..\src/data/data.csv"
 
 # Read CSV
 @pytest.fixture(scope="module")
