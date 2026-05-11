@@ -3,7 +3,7 @@ import pandas as pd
 
 @pytest.fixture(scope="session")
 def csv_data():
-   path = "src/data/data.csv"
+   path = "../src/data/data.csv"
    return pd.read_csv(path)
 
 @pytest.fixture(scope="session")
