@@ -4,6 +4,8 @@ import pandas as pd
 @pytest.fixture(scope="session")
 def csv_data():
    path = "../src/data/data.csv"
+   print("Current Working Directory:",os.getcwd())
+   print("Resolved Path:",os.path.abspath(path))
    return pd.read_csv(path)
 
 @pytest.fixture(scope="session")
