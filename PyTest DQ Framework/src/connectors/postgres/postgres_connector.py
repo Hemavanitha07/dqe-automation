@@ -1,17 +1,32 @@
-
 import psycopg2
+import pandas as pd
+
 
 class PostgresConnectorContextManager:
-    def __init__(self, db_host: str, db_name: str, ...):
-        # init
+
+    def __init__(self, db_user, db_password, db_host, db_name, db_port):
+        self.connection = None
+        self.db_user = db_user
+        self.db_password = db_password
+        self.db_host = db_host
+        self.db_name = db_name
+        self.db_port = db_port
 
     def __enter__(self):
-        # create conn
+        self.connection = psycopg2.connect(
+            host=self.db_host,
+            database=self.db_name,
+            user=self.db_user,
+            password=self.db_password,
+            port=self.db_port
+        )
+        return self
 
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        # close conn
+    def get_data_sql(self, query):
+        return pd.read_sql(query, self.connection)
 
-    def get_data_sql(self, sql):
-        # exec query, result = pandas df
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.connection:
+            self.connection.close()
 
 
