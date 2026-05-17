@@ -26,6 +26,8 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
+      - ./parquet_data:/parquet_data
+      - ./generated_report:/generated_report
 
 networks:
   tafordqenetwork:
